@@ -26,12 +26,8 @@ RUN /etc/my_init.d/00_regen_ssh_host_keys.sh
 # Use baseimage-docker's init system.
 CMD ["/sbin/my_init"]
 
-## Install an SSH of your choice.
-ADD id_rsa.pub /tmp/your_key.pub
-RUN cat /tmp/your_key.pub >> /root/.ssh/authorized_keys && rm -f /tmp/your_key.pub
-
 RUN apt-get update
-RUN apt-get -y upgrade
+#RUN apt-get -y upgrade
 
 RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y wget unzip htop vim
 
